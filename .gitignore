@@ -5,6 +5,10 @@ __pycache__/
 .vscode/
 
 .env
+
+output/charts/*.png
+output/reports/*
+
 *.pbix
 
 *.log
