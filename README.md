@@ -1,4 +1,4 @@
-# 🛒 Amazon Product Data Analysis using Python, MySQL & Power BI
+# 🛒 Amazon Product Data Analysis using Python, MySQL.
 
 An end-to-end **Data Analytics Portfolio Project** built using **Python, MySQL**. This project demonstrates the complete data analytics workflow from raw data cleaning to business insights, database integration, and interactive dashboard development.
 
@@ -16,7 +16,7 @@ This project covers the complete Data Analysis process.
 - 📈 Professional Data Visualization
 - 🗄️ MySQL Database Import
 - 💻 SQL Business Queries
-- 📊 Interactive
+- 📊 Interactive chart and graph
 
 ---
 
@@ -59,8 +59,7 @@ amazon-product-analysis-python/
 │   ├── create_table.sql
 │   └── business_queries.sql
 │
-├── powerbi/
-│   └── Amazon_Product_Dashboard.pbix
+├
 │
 ├── main.py
 ├── requirements.txt
