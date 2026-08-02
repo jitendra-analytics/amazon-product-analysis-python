@@ -6,9 +6,6 @@ __pycache__/
 
 .env
 
-output/charts/*.png
-output/reports/*
-
 *.pbix
 
 *.log
