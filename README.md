@@ -230,41 +230,6 @@ SELECT product_name, discounted_price
 FROM amazon_products
 WHERE discounted_price > 10000;
 ```
-
----
-
-# 📊 Power BI Dashboard
-
-The dashboard includes:
-
-## KPI Cards
-
-- Total Products
-- Average Rating
-- Average Discount
-- Total Reviews
-- Average Actual Price
-- Average Discounted Price
-
-## Visualizations
-
-- Top Categories
-- Rating Distribution
-- Discount Distribution
-- Discount vs Rating
-- Category Share
-- Price Distribution
-- Top Reviewed Products
-- Top Rated Products
-- Correlation Analysis
-
-## Filters
-
-- Category
-- Rating
-
----
-
 # 🚀 How to Run
 
 ## Install Required Libraries
