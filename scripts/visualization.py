@@ -1,10 +1,9 @@
 """
-Amazon Product Data Visualization (Refactored)
+Amazon Product Data Visualization (Refactored for 6x4 Charts @ 100 DPI)
 Author: Jitendra More
 """
 
 import os
-import textwrap
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -17,11 +16,15 @@ plt.rcParams["font.sans-serif"] = "DejaVu Sans"
 plt.rcParams["axes.edgecolor"] = "#cccccc"
 plt.rcParams["axes.linewidth"] = 0.8
 
+# Standard Figure Dimension & Quality Setup
+FIG_SIZE = (6, 4)
+DPI_VAL = 100
+
 # Create Output Folder
 os.makedirs("output/charts", exist_ok=True)
 
 # Helper function to truncate long titles for graphs
-def shorten_text(text, max_len=40):
+def shorten_text(text, max_len=25):
     text = str(text)
     return text[:max_len] + "..." if len(text) > max_len else text
 
@@ -29,7 +32,6 @@ def shorten_text(text, max_len=40):
 def clean_category(cat_str):
     if pd.isna(cat_str):
         return "Unknown"
-    # Take the last or first broad category if pipe-separated
     parts = str(cat_str).split("|")
     return parts[-1] if len(parts) > 1 else parts[0]
 
@@ -71,12 +73,12 @@ df = df.dropna(subset=["rating", "rating_count", "discount_percentage", "discoun
 
 # Simplify Category & Product Names for clean visual labels
 if "product_name" in df.columns:
-    df["short_product_name"] = df["product_name"].apply(lambda x: shorten_text(x, 35))
+    df["short_product_name"] = df["product_name"].apply(lambda x: shorten_text(x, 25))
 else:
     df["short_product_name"] = df["product_id"]
 
 if "category" in df.columns:
-    df["clean_category"] = df["category"].apply(clean_category).apply(lambda x: shorten_text(x, 25))
+    df["clean_category"] = df["category"].apply(clean_category).apply(lambda x: shorten_text(x, 20))
 
 # =====================================================
 # KPI VALUES
@@ -106,59 +108,51 @@ kpi_data = [
 ]
 
 for filename, title, value, color in kpi_data:
-    fig, ax = plt.subplots(figsize=(5, 2.5))
-    ax.text(0.5, 0.55, value, fontsize=28, fontweight="bold", ha="center", va="center", color=color)
-    ax.text(0.5, 0.2, title.upper(), fontsize=11, fontweight="bold", ha="center", va="center", color="#555555")
+    fig, ax = plt.subplots(figsize=FIG_SIZE, dpi=DPI_VAL)
+    ax.text(0.5, 0.55, value, fontsize=24, fontweight="bold", ha="center", va="center", color=color)
+    ax.text(0.5, 0.3, title.upper(), fontsize=12, fontweight="bold", ha="center", va="center", color="#555555")
     ax.axis("off")
     plt.tight_layout()
-    plt.savefig(f"output/charts/{filename}", dpi=300, bbox_inches="tight")
+    plt.savefig(f"output/charts/{filename}", dpi=DPI_VAL, bbox_inches="tight")
     plt.close()
 
 # =====================================================
 # 05 Rating Distribution
 # =====================================================
-plt.figure(figsize=(8, 5))
+plt.figure(figsize=FIG_SIZE, dpi=DPI_VAL)
 sns.histplot(df["rating"], bins=10, kde=True, color="#2b5c8f", edgecolor="black")
-plt.title("Rating Distribution", fontsize=14, fontweight="bold", pad=15)
-plt.xlabel("Rating (Out of 5)", fontsize=11)
-plt.ylabel("Number of Products", fontsize=11)
+plt.title("Rating Distribution", fontsize=12, fontweight="bold", pad=10)
+plt.xlabel("Rating (Out of 5)", fontsize=10)
+plt.ylabel("Number of Products", fontsize=10)
 plt.tight_layout()
-plt.savefig("output/charts/05_rating_distribution.png", dpi=300)
+plt.savefig("output/charts/05_rating_distribution.png")
 plt.close()
 
 # =====================================================
 # 06 Discount Distribution
 # =====================================================
-plt.figure(figsize=(8, 5))
+plt.figure(figsize=FIG_SIZE, dpi=DPI_VAL)
 sns.histplot(df["discount_percentage"], bins=10, kde=True, color="#2ca02c", edgecolor="black")
-plt.title("Discount Percentage Distribution", fontsize=14, fontweight="bold", pad=15)
-plt.xlabel("Discount (%)", fontsize=11)
-plt.ylabel("Number of Products", fontsize=11)
+plt.title("Discount Percentage Distribution", fontsize=12, fontweight="bold", pad=10)
+plt.xlabel("Discount (%)", fontsize=10)
+plt.ylabel("Number of Products", fontsize=10)
 plt.tight_layout()
-plt.savefig("output/charts/06_discount_distribution.png", dpi=300)
+plt.savefig("output/charts/06_discount_distribution.png")
 plt.close()
-
-print("\nPart 1 (KPIs & Distributions) Completed Successfully")
 
 # =====================================================
 # 07 Top 10 Highest Rated Products
 # =====================================================
 top_rating = df.sort_values(by=["rating", "rating_count"], ascending=[False, False]).head(10)
 
-plt.figure(figsize=(10, 6))
-bars = plt.barh(top_rating["short_product_name"], top_rating["rating"], color="#3182bd", edgecolor="none")
-plt.title("Top 10 Highest Rated Products", fontsize=14, fontweight="bold", pad=15)
-plt.xlabel("Rating", fontsize=11)
+plt.figure(figsize=FIG_SIZE, dpi=DPI_VAL)
+bars = plt.barh(top_rating["short_product_name"], top_rating["rating"], color="#3182bd")
+plt.title("Top 10 Highest Rated Products", fontsize=12, fontweight="bold", pad=10)
+plt.xlabel("Rating", fontsize=10)
 plt.xlim(0, 5)
 plt.gca().invert_yaxis()
-
-# Add values on bars
-for bar in bars:
-    plt.text(bar.get_width() - 0.3, bar.get_y() + bar.get_height()/2, f"{bar.get_width():.1f}", 
-             va="center", color="white", fontweight="bold")
-
 plt.tight_layout()
-plt.savefig("output/charts/07_top_rated_products.png", dpi=300)
+plt.savefig("output/charts/07_top_rated_products.png")
 plt.close()
 
 # =====================================================
@@ -166,13 +160,13 @@ plt.close()
 # =====================================================
 top_review = df.sort_values("rating_count", ascending=False).head(10)
 
-plt.figure(figsize=(10, 6))
+plt.figure(figsize=FIG_SIZE, dpi=DPI_VAL)
 plt.barh(top_review["short_product_name"], top_review["rating_count"], color="#e6550d")
-plt.title("Top 10 Most Reviewed Products", fontsize=14, fontweight="bold", pad=15)
-plt.xlabel("Review Count", fontsize=11)
+plt.title("Top 10 Most Reviewed Products", fontsize=12, fontweight="bold", pad=10)
+plt.xlabel("Review Count", fontsize=10)
 plt.gca().invert_yaxis()
 plt.tight_layout()
-plt.savefig("output/charts/08_top_reviewed_products.png", dpi=300)
+plt.savefig("output/charts/08_top_reviewed_products.png")
 plt.close()
 
 # =====================================================
@@ -180,32 +174,25 @@ plt.close()
 # =====================================================
 top_discount = df.sort_values("discount_percentage", ascending=False).head(10)
 
-plt.figure(figsize=(10, 6))
+plt.figure(figsize=FIG_SIZE, dpi=DPI_VAL)
 plt.barh(top_discount["short_product_name"], top_discount["discount_percentage"], color="#31a354")
-plt.title("Top 10 Highest Discount Products", fontsize=14, fontweight="bold", pad=15)
-plt.xlabel("Discount (%)", fontsize=11)
+plt.title("Top 10 Highest Discount Products", fontsize=12, fontweight="bold", pad=10)
+plt.xlabel("Discount (%)", fontsize=10)
 plt.gca().invert_yaxis()
 plt.tight_layout()
-plt.savefig("output/charts/09_top_discount_products.png", dpi=300)
+plt.savefig("output/charts/09_top_discount_products.png")
 plt.close()
 
 # =====================================================
 # 10 Discount vs Rating
 # =====================================================
-plt.figure(figsize=(8, 6))
-sns.scatterplot(
-    data=df, 
-    x="discount_percentage", 
-    y="rating", 
-    alpha=0.6, 
-    color="#756bb1",
-    s=50
-)
-plt.title("Discount Percentage vs Product Rating", fontsize=14, fontweight="bold", pad=15)
-plt.xlabel("Discount (%)", fontsize=11)
-plt.ylabel("Rating", fontsize=11)
+plt.figure(figsize=FIG_SIZE, dpi=DPI_VAL)
+sns.scatterplot(data=df, x="discount_percentage", y="rating", alpha=0.7, color="#756bb1", s=40)
+plt.title("Discount % vs Product Rating", fontsize=12, fontweight="bold", pad=10)
+plt.xlabel("Discount (%)", fontsize=10)
+plt.ylabel("Rating", fontsize=10)
 plt.tight_layout()
-plt.savefig("output/charts/10_discount_vs_rating.png", dpi=300)
+plt.savefig("output/charts/10_discount_vs_rating.png")
 plt.close()
 
 # =====================================================
@@ -214,40 +201,39 @@ plt.close()
 cat_col = "clean_category" if "clean_category" in df.columns else "category"
 top_category = df[cat_col].value_counts().head(10)
 
-plt.figure(figsize=(10, 6))
+plt.figure(figsize=FIG_SIZE, dpi=DPI_VAL)
 plt.barh(top_category.index, top_category.values, color="#6baed6")
-plt.title("Top 10 Product Categories", fontsize=14, fontweight="bold", pad=15)
-plt.xlabel("Number of Products", fontsize=11)
+plt.title("Top 10 Product Categories", fontsize=12, fontweight="bold", pad=10)
+plt.xlabel("Number of Products", fontsize=10)
 plt.gca().invert_yaxis()
 plt.tight_layout()
-plt.savefig("output/charts/11_top_categories.png", dpi=300)
+plt.savefig("output/charts/11_top_categories.png")
 plt.close()
-
-print("\nPart 2 (Top Products & Relationships) Completed Successfully")
 
 # =====================================================
 # 14 Correlation Heatmap
 # =====================================================
-plt.figure(figsize=(8, 6))
+plt.figure(figsize=FIG_SIZE, dpi=DPI_VAL)
 corr = df[["actual_price", "discounted_price", "discount_percentage", "rating", "rating_count"]].corr()
 
 sns.heatmap(
     corr, 
     annot=True, 
     cmap="Blues", 
-    linewidths=1, 
+    linewidths=0.5, 
     fmt=".2f",
-    cbar_kws={"shrink": .8}
+    cbar_kws={"shrink": .8},
+    annot_kws={"size": 8}
 )
-plt.title("Correlation Matrix", fontsize=14, fontweight="bold", pad=15)
+plt.title("Correlation Matrix", fontsize=12, fontweight="bold", pad=10)
 plt.tight_layout()
-plt.savefig("output/charts/14_correlation_heatmap.png", dpi=300)
+plt.savefig("output/charts/14_correlation_heatmap.png")
 plt.close()
 
 # =====================================================
-# 15 Category Share (Donut Chart for better readability)
+# 15 Category Share (Donut Chart)
 # =====================================================
-plt.figure(figsize=(8, 8))
+plt.figure(figsize=FIG_SIZE, dpi=DPI_VAL)
 colors = sns.color_palette("tab10", len(top_category))
 
 wedges, texts, autotexts = plt.pie(
@@ -257,17 +243,16 @@ wedges, texts, autotexts = plt.pie(
     startangle=140,
     pctdistance=0.75,
     colors=colors,
-    textprops={"fontsize": 9}
+    textprops={"fontsize": 7}
 )
 
-# Draw a circle in center to make it a Donut Chart
 centre_circle = plt.Circle((0,0), 0.50, fc='white')
 fig = plt.gcf()
 fig.gca().add_artist(centre_circle)
 
-plt.title("Top 10 Category Share", fontsize=14, fontweight="bold", pad=15)
+plt.title("Top 10 Category Share", fontsize=12, fontweight="bold", pad=10)
 plt.tight_layout()
-plt.savefig("output/charts/15_category_share.png", dpi=300)
+plt.savefig("output/charts/15_category_share.png")
 plt.close()
 
-print("\nAll 15 Charts Created Successfully!")
+print("\nAll Charts Created Successfully with Size (6, 4) @ 100 DPI!")
