@@ -1,105 +1,198 @@
 """
-Amazon Product Analysis
-Step 1 : Load Dataset
+Amazon Product Data Analysis
+Step 1: Load Dataset
 
-Author : Jitendra More
+Author: Jitendra More
 """
 
 import os
+import sys
 import pandas as pd
 
-print("=" * 60)
-print(" AMAZON PRODUCT DATA ANALYSIS ")
-print("=" * 60)
 
-# =====================================
-# Create Output Folders
-# =====================================
+# ============================================================
+# 1. PROJECT PATHS
+# ============================================================
 
-os.makedirs("output", exist_ok=True)
-os.makedirs("output/charts", exist_ok=True)
-os.makedirs("output/reports", exist_ok=True)
+DATA_PATH = os.path.join("data", "amazon.csv")
+OUTPUT_DIR = "output"
+CHARTS_DIR = os.path.join(OUTPUT_DIR, "charts")
+REPORTS_DIR = os.path.join(OUTPUT_DIR, "reports")
 
-# =====================================
-# Load Dataset
-# =====================================
 
-DATA_PATH = "data/amazon.csv"
+# ============================================================
+# 2. CREATE OUTPUT FOLDERS
+# ============================================================
+
+os.makedirs(OUTPUT_DIR, exist_ok=True)
+os.makedirs(CHARTS_DIR, exist_ok=True)
+os.makedirs(REPORTS_DIR, exist_ok=True)
+
+
+# ============================================================
+# 3. PROJECT HEADER
+# ============================================================
+
+print("=" * 70)
+print("AMAZON PRODUCT DATA ANALYSIS")
+print("STEP 1: LOAD DATASET")
+print("=" * 70)
+
+
+# ============================================================
+# 4. CHECK DATASET
+# ============================================================
+
+if not os.path.exists(DATA_PATH):
+    print(f"\n❌ ERROR: Dataset not found at: {DATA_PATH}")
+    print("Please place amazon.csv inside the data folder.")
+    sys.exit(1)
+
+
+# ============================================================
+# 5. LOAD DATASET
+# ============================================================
 
 try:
     df = pd.read_csv(DATA_PATH)
-    print("\n✅ Dataset Loaded Successfully")
 
-except FileNotFoundError:
-    print("\n❌ Dataset not found.")
-    exit()
+except Exception as error:
+    print("\n❌ ERROR: Unable to load dataset.")
+    print("Reason:", error)
+    sys.exit(1)
 
-# =====================================
-# Dataset Shape
-# =====================================
 
-print("\nDataset Shape")
-print("-" * 60)
-print(df.shape)
+print("\n✅ Dataset Loaded Successfully")
+print(f"Location : {DATA_PATH}")
 
-# =====================================
-# First 5 Records
-# =====================================
 
-print("\nFirst 5 Records")
-print("-" * 60)
-print(df.head())
+# ============================================================
+# 6. DATASET SIZE
+# ============================================================
 
-# =====================================
-# Last 5 Records
-# =====================================
+rows, columns = df.shape
 
-print("\nLast 5 Records")
-print("-" * 60)
-print(df.tail())
+print("\n" + "-" * 70)
+print("DATASET SIZE")
+print("-" * 70)
 
-# =====================================
-# Dataset Information
-# =====================================
+print(f"Rows    : {rows:,}")
+print(f"Columns : {columns}")
 
-print("\nDataset Information")
-print("-" * 60)
-df.info()
 
-# =====================================
-# Column Names
-# =====================================
+# ============================================================
+# 7. COLUMN NAMES
+# ============================================================
 
-print("\nColumn Names")
-print("-" * 60)
+print("\n" + "-" * 70)
+print("COLUMN NAMES")
+print("-" * 70)
 
-for column in df.columns:
-    print(column)
+for number, column in enumerate(df.columns, start=1):
+    print(f"{number:02}. {column}")
 
-# =====================================
-# Missing Values
-# =====================================
 
-print("\nMissing Values")
-print("-" * 60)
-print(df.isnull().sum())
+# ============================================================
+# 8. FIRST 5 RECORDS
+# ============================================================
 
-# =====================================
-# Duplicate Rows
-# =====================================
+print("\n" + "-" * 70)
+print("FIRST 5 RECORDS")
+print("-" * 70)
 
-print("\nDuplicate Rows")
-print("-" * 60)
-print(df.duplicated().sum())
+print(df.head().to_string())
 
-# =====================================
-# Dataset Summary
-# =====================================
 
-print("\nDataset Summary")
-print("-" * 60)
-print(df.describe(include="all"))
+# ============================================================
+# 9. LAST 5 RECORDS
+# ============================================================
 
-print("\n" + "=" * 60)
-print("LOAD DATA COMPLETED")
-print("=" * 60)
+print("\n" + "-" * 70)
+print("LAST 5 RECORDS")
+print("-" * 70)
+
+print(df.tail().to_string())
+
+
+# ============================================================
+# 10. DATA TYPES
+# ============================================================
+
+print("\n" + "-" * 70)
+print("DATA TYPES")
+print("-" * 70)
+
+print(df.dtypes)
+
+
+# ============================================================
+# 11. MISSING VALUES
+# ============================================================
+
+print("\n" + "-" * 70)
+print("MISSING VALUES")
+print("-" * 70)
+
+missing_values = df.isnull().sum()
+
+print(missing_values)
+
+
+# ============================================================
+# 12. DUPLICATE ROWS
+# ============================================================
+
+duplicate_rows = df.duplicated().sum()
+
+print("\n" + "-" * 70)
+print("DUPLICATE ROWS")
+print("-" * 70)
+
+print(f"Duplicate Rows : {duplicate_rows:,}")
+
+
+# ============================================================
+# 13. UNIQUE PRODUCT IDS
+# ============================================================
+
+if "product_id" in df.columns:
+
+    unique_products = df["product_id"].nunique()
+
+    print("\n" + "-" * 70)
+    print("UNIQUE PRODUCTS")
+    print("-" * 70)
+
+    print(f"Unique Product IDs : {unique_products:,}")
+
+else:
+    print("\n⚠️ product_id column not found.")
+
+
+# ============================================================
+# 14. DATASET SUMMARY
+# ============================================================
+
+print("\n" + "-" * 70)
+print("NUMERIC SUMMARY")
+print("-" * 70)
+
+print(df.describe().to_string())
+
+
+# ============================================================
+# 15. FINAL LOAD REPORT
+# ============================================================
+
+print("\n" + "=" * 70)
+print("LOAD DATA COMPLETED SUCCESSFULLY")
+print("=" * 70)
+
+print(f"Total Rows          : {rows:,}")
+print(f"Total Columns       : {columns}")
+print(f"Duplicate Rows      : {duplicate_rows:,}")
+
+if "product_id" in df.columns:
+    print(f"Unique Product IDs  : {unique_products:,}")
+
+print("=" * 70)

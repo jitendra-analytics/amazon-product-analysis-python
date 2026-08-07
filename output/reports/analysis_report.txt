@@ -1,0 +1,127 @@
+AMAZON PRODUCT DATA ANALYSIS REPORT
+======================================================================
+
+KEY PERFORMANCE INDICATORS
+----------------------------------------------------------------------
+Total Products           : 1,348
+Average Rating           : 4.09
+Average Discount         : 46.66%
+Total Reviews            : 23,801,471
+Average Actual Price     : Rs. 5,700.51
+Average Discounted Price : Rs. 3,310.12
+
+HIGHEST RATED PRODUCT
+----------------------------------------------------------------------
+Amazon Basics Wireless Mouse | 2.4 GHz Connection, 1600 DPI | Type - C Adapter | Upto 12 Months of Battery Life | Ambidextrous Design | Suitable for PC/Mac/Laptop
+Rating: 5.0
+Reviews: 23
+
+MOST REVIEWED PRODUCT
+----------------------------------------------------------------------
+Amazon Basics High-Speed HDMI Cable, 6 Feet (2-Pack),Black
+Reviews: 426,973
+Rating: 4.4
+
+HIGHEST DISCOUNT PRODUCT
+----------------------------------------------------------------------
+rts [2 Pack] Mini USB C Type C Adapter Plug, Type C Female to USB A Male Charger Charging Cable Adapter Converter compatible for iPhone, Samsung S20 ultra/S21/S10/S8/S9/MacBook Pro iPad Silver
+Discount: 94%
+Actual Price: Rs. 4,999.00
+Discounted Price: Rs. 294.00
+
+TOP 10 HIGHEST RATED PRODUCTS
+----------------------------------------------------------------------
+                                                                                                                                                                                                                                                                product_name  rating  rating_count
+                                                                                                          Amazon Basics Wireless Mouse | 2.4 GHz Connection, 1600 DPI | Type - C Adapter | Upto 12 Months of Battery Life | Ambidextrous Design | Suitable for PC/Mac/Laptop     5.0          23.0
+                                                                                             Syncwire LTG to USB Cable for Fast Charging Compatible with Phone 5/ 5C/ 5S/ 6/ 6S/ 7/8/ X/XR/XS Max/ 11/12/ 13 Series and Pad Air/Mini, Pod & Other Devices (1.1 Meter, White)     5.0           5.0
+                                                                                        Swiffer Instant Electric Water Heater Faucet Tap Home-Kitchen Instantaneous Water Heater Tank less for Tap, LED Electric Head Water Heaters Tail Gallon Comfort(3000W) ((Pack of 1))     4.8       53803.0
+                                                                                            Instant Pot Air Fryer, Vortex 2QT, Touch Control Panel, 360° EvenCrisp™ Technology, Uses 95 % less Oil, 4-in-1 Appliance: Air Fry, Roast, Bake, Reheat (Vortex 1.97Litre, Black)     4.8        3964.0
+Oratech Coffee Frother electric, milk frother electric, coffee beater, cappuccino maker, Coffee Foamer, Mocktail Mixer, Coffee Foam Maker, coffee whisker electric, Froth Maker, coffee stirrers electric, coffee frothers, Coffee Blender, (6 Month Warranty) (Multicolour)     4.8          28.0
+                                                                                                                                                                            Spigen EZ Fit Tempered Glass Screen Protector for iPhone 14 Pro Max - 2 Pack (Sensor Protection)     4.7        7779.0
+                                                                                                                                                                                            Sony Bravia 164 cm (65 inches) 4K Ultra HD Smart LED Google TV KD-65X74K (Black)     4.7        5935.0
+                                                                          Campfire Spring Chef Prolix Instant Portable Water Heater Geyser 1Ltr. for Use Home Stainless Steel Baking Rack | Restaurant | Office | Labs | Clinics | Saloon | with Installation Kit (With MCB)     4.7        2591.0
+                                                                                          Multifunctional 2 in 1 Electric Egg Boiling Steamer Egg Frying Pan Egg Boiler Electric Automatic Off with Egg Boiler Machine Non-Stick Electric Egg Frying Pan-Tiger Woods (Multy)     4.7        2300.0
+                                                                                         FIGMENT Handheld Milk Frother Rechargeable, 3-Speed Electric Frother for Coffee with 2 Whisks and Coffee Decoration Tool, Coffee Frother Mixer, CRESCENT ENTERPRISES VRW0.50BK (A1)     4.7        1729.0
+
+TOP 10 MOST REVIEWED PRODUCTS
+----------------------------------------------------------------------
+                                                                                                product_name  rating_count  rating
+                                                  Amazon Basics High-Speed HDMI Cable, 6 Feet (2-Pack),Black      426973.0     4.4
+                         Amazon Basics High-Speed HDMI Cable, 6 Feet - Supports Ethernet, 3D, 4K video,Black      426973.0     4.4
+                                   AmazonBasics Flexible Premium HDMI Cable (Black, 4K@60Hz, 18Gbps), 3-Foot      426973.0     4.4
+                                             boAt Bassheads 100 in Ear Wired Earphones with Mic(Furious Red)      363713.0     4.1
+                                              boAt Bassheads 100 in Ear Wired Earphones with Mic(Taffy Pink)      363713.0     4.1
+                                                 boAt BassHeads 100 in-Ear Wired Headphones with Mic (Black)      363711.0     4.1
+                Redmi 9 Activ (Carbon Black, 4GB RAM, 64GB Storage) | Octa-core Helio G35 | 5000 mAh Battery      313836.0     4.1
+ Redmi 9A Sport (Coral Green, 2GB RAM, 32GB Storage) | 2GHz Octa-core Helio G25 Processor | 5000 mAh Battery      313836.0     4.1
+ Redmi 9A Sport (Coral Green, 3GB RAM, 32GB Storage) | 2GHz Octa-core Helio G25 Processor | 5000 mAh Battery      313832.0     4.1
+Redmi 9A Sport (Carbon Black, 2GB RAM, 32GB Storage) | 2GHz Octa-core Helio G25 Processor | 5000 mAh Battery      313832.0     4.1
+
+TOP 10 HIGHEST DISCOUNT PRODUCTS
+----------------------------------------------------------------------
+                                                                                                                                                                                    product_name  discount_percentage  actual_price  discounted_price
+rts [2 Pack] Mini USB C Type C Adapter Plug, Type C Female to USB A Male Charger Charging Cable Adapter Converter compatible for iPhone, Samsung S20 ultra/S21/S10/S8/S9/MacBook Pro iPad Silver                 94.0        4999.0             294.0
+                                       Fire-Boltt Ninja Call Pro Plus 1.83" Smart Watch with Bluetooth Calling, AI Voice Assistance, 100 Sports Modes IP67 Rating, 240*280 Pixel High Resolution                 91.0       19999.0            1799.0
+                                                     LAPSTER Spiral Charger Spiral Charger Cable Protectors for Wires Data Cable Saver Charging Cord Protective Cable Cover Set of 3 (12 Pieces)                 90.0         999.0              99.0
+                                                        Sounce Fast Phone Charging Cable & Data Sync USB Cable Compatible for iPhone 13, 12,11, X, 8, 7, 6, 5, iPad Air, Pro, Mini & iOS Devices                 90.0        1899.0             199.0
+                                                          Sounce Protective Case Cover Compatible Boat Xtend Overall Protective Case TPU HD Clear Ultra-Thin Cover with Unbreakable Screen Guard                 90.0        1899.0             199.0
+                                    beatXP Kitchen Scale Multipurpose Portable Electronic Digital Weighing Scale | Weight Machine With Back light LCD Display | White |10 kg | 2 Year Warranty |                 90.0        1999.0             199.0
+                  Sounce Spiral Charger Cable Protector Data Cable Saver Charging Cord Protective Cable Cover Headphone MacBook Laptop Earphone Cell Phone Set of 3 (Cable Protector (12 Units))                 90.0         999.0              99.0
+                                                                 Silicone Rubber Earbuds Tips, Eartips, Earpads, Earplugs, for Replacement in Earphones and Bluetooth Medium Size (10 Pcs Black)                 90.0         999.0              99.0
+                                                                    LAPSTER 12pcs Spiral Cable Protectors for Charger, Wires, Data Charger Cable Protector for Computers, Cell Phones etc.(Grey)                 90.0         999.0              99.0
+                                          pTron Solero M241 2.4A Micro USB Data & Charging Cable, Made in India, 480Mbps Data Sync, Durable 1-Meter Long USB Cable for Micro USB Devices (White)                 89.0         800.0              89.0
+
+TOP 10 PRODUCT CATEGORIES
+----------------------------------------------------------------------
+category_name
+USBCables              159
+Smartphones             68
+SmartWatches            62
+SmartTelevisions        60
+In-Ear                  51
+RemoteControls          49
+MixerGrinders           27
+Mice                    24
+DryIrons                24
+InstantWaterHeaters     23
+
+RATING ANALYSIS
+----------------------------------------------------------------------
+Minimum Rating: 2.00
+Maximum Rating: 5.00
+Average Rating: 4.09
+Median Rating: 4.10
+Products Rated 4.5 or Above: 95
+
+DISCOUNT ANALYSIS
+----------------------------------------------------------------------
+Minimum Discount: 0.00%
+Maximum Discount: 94.00%
+Average Discount: 46.66%
+Products with 70%+ Discount: 209
+
+PRICE ANALYSIS
+----------------------------------------------------------------------
+Lowest Actual Price: Rs. 39.00
+Highest Actual Price: Rs. 139,900.00
+Average Actual Price: Rs. 5,700.51
+Average Discounted Price: Rs. 3,310.12
+
+CORRELATION MATRIX
+----------------------------------------------------------------------
+                     actual_price  discounted_price  discount_percentage  rating  rating_count
+actual_price                 1.00              0.96                -0.11    0.13         -0.03
+discounted_price             0.96              1.00                -0.24    0.13         -0.02
+discount_percentage         -0.11             -0.24                 1.00   -0.16          0.00
+rating                       0.13              0.13                -0.16    1.00          0.10
+rating_count                -0.03             -0.02                 0.00    0.10          1.00
+
+BUSINESS INSIGHTS
+----------------------------------------------------------------------
+1. The dataset contains 1,348 unique products.
+2. The average product rating is 4.09 out of 5.
+3. The average discount offered is 46.66%.
+4. Products received approximately 23,801,471 reviews.
+5. 95 products have ratings of 4.5 or higher.
+6. 209 products offer discounts of 70% or more.
+7. The most common product category is 'USBCables'.
